@@ -1,16 +1,18 @@
-require("@nomicfoundation/hardhat-toolbox");
+require("@nomiclabs/hardhat-waffle");
 require("dotenv").config({ path: ".env" });
 
-const QUICKNODE_HTTP_URL = process.env.QUICKNODE_HTTP_URL;
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const ALCHEMY_API_KEY_URL = process.env.ALCHEMY_API_KEY_URL;
+
+const MUMBAI_PRIVATE_KEY = process.env.MUMBAI_PRIVATE_KEY;
+
 const POLYGONSCAN_KEY = process.env.POLYGONSCAN_KEY;
 
 module.exports = {
   solidity: "0.8.4",
   networks: {
     mumbai: {
-      url: QUICKNODE_HTTP_URL,
-      accounts: [PRIVATE_KEY],
+      url: ALCHEMY_API_KEY_URL,
+      accounts: [MUMBAI_PRIVATE_KEY],
     },
   },
   etherscan: {

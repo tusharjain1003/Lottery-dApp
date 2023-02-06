@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 import "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol";
 
 contract RandomWinnerGame is VRFConsumerBase, Ownable {
@@ -37,7 +39,7 @@ contract RandomWinnerGame is VRFConsumerBase, Ownable {
    * @param vrfFee the amount of LINK to send with the request
    * @param vrfKeyHash ID of public key against which randomness is generated
    */
-    constructor(address vrfCoordinator, address linkToken,
+    constructor(address vrfCoordinator, address linkToken, 
     bytes32 vrfKeyHash, uint256 vrfFee)
     VRFConsumerBase(vrfCoordinator, linkToken) {
         keyHash = vrfKeyHash;
@@ -108,12 +110,12 @@ contract RandomWinnerGame is VRFConsumerBase, Ownable {
     */
     function getRandomWinner() private returns (bytes32 requestId) {
         // LINK is an internal interface for Link token found within the VRFConsumerBase
-        // Here we use the balanceOF method from that interface to make sure that our
+        // Here we use the balanceOF method from that interface to make sure that our 
         // contract has enough link so that we can request the VRFCoordinator for randomness
         require(LINK.balanceOf(address(this)) >= fee, "Not enough LINK");
-        // Make a request to the VRF coordinator.
+        // Make a request to the VRF coordinator. 
         // requestRandomness is a function within the VRFConsumerBase
-        // it starts the process of randomness generation
+        // it starts the process of randomness generation 
         return requestRandomness(keyHash, fee);
     }
 

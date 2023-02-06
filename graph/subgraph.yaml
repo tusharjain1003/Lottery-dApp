@@ -1,0 +1,32 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: RandomWinnerGame
+    network: mumbai
+    source:
+      address: "0x40bfD4337752E12C421503EAB6c5093C61F23E95"
+      abi: RandomWinnerGame
+      startBlock: 31765041
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - GameEnded
+        - GameStarted
+        - OwnershipTransferred
+      abis:
+        - name: RandomWinnerGame
+          file: ./abis/RandomWinnerGame.json
+      eventHandlers:
+        - event: GameEnded(uint256,address,bytes32)
+          handler: handleGameEnded
+        - event: PlayerJoined(uint256,address)
+          handler: handlePlayerJoined
+        - event: GameStarted(uint256,uint8,uint256)
+          handler: handleGameStarted
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/mapping.ts
