@@ -12,7 +12,7 @@
 <ol>
   <li>Visit the dApp's website.</li>
   <li>Connect your wallet to the dApp.</li>
-  <li>Choose the number of tickets you want to purchase.</li>
+  <li>Purchase a ticket</li>
   <li>Pay for the tickets using MATIC.</li>
   <li>Wait for the lottery results to be announced.</li>
   <li>If you win, the winnings will be automatically deposited into your wallet.</li>
@@ -30,14 +30,6 @@
   <li>Axios</li>
 </ul>
 
-<h2>Installation</h2>
-<ol>
-  <li>Clone the repository.</li>
-  <li>Install the dependencies using npm install.</li>
-  <li>Compile the contracts using npx hardhat compile.</li>
-  <li>Deploy the contracts using npx hardhat run scripts/deploy.js.</li>
-  <li>Start the Next.js app using npm run dev.</li>
-</ol>
 
 <h2>Contributing</h2>
 <p>We welcome contributions from the community. If you have any suggestions or want to contribute to the project, please open an issue or a pull request.</p>
